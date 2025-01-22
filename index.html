@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .tooltip {
+        visibility: hidden;
+        position: absolute;
+        transition: all;
+        transition-delay: 300ms;
+      }
+      .has-tooltip:hover .tooltip {
+        visibility: visible;
+        z-index: 100;
+        transition: all;
+        transition-delay: 300ms;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background min-h-screen flex items-center justify-center font-mono"
+  >
+    <div class="w-full max-w-md p-8 bg-card rounded-lg">
+      <h1 class="text-white text-xl mb-6 text-center">Password Generator</h1>
+
+      <!-- Password Output Field -->
+      <div class="bg-input p-4 flex justify-between items-center mb-4">
+        <span class="text-white/50 text-lg" id="password">P4$5W0rD!</span>
+        <button
+          class="text-accent has-tooltip relative"
+          onclick="copyPassword()"
+        >
+          <span
+            class="tooltip bg-green-500 w-40 -translate-x-[50%] -translate-y-[110%] rounded-lg transition duration-500 p-2 text-white"
+            id="tooltip"
+            >Copy Password!</span
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Character Length -->
+      <div class="mb-6">
+        <div class="flex justify-between text-white mb-2">
+          <label for="password-strength">Character Length</label>
+          <span class="text-accent" id="password-length-indicator">0</span>
+        </div>
+        <input
+          type="range"
+          onchange="onPasswordLengthChange()"
+          name="password-strength"
+          id="password-strength"
+          class="w-full h-2 rounded-lg accent-accent appearance-none cursor-pointer bg-input"
+          min="0"
+          max="20"
+          value="0"
+        />
+      </div>
+
+      <div class="space-y-4 mb-8">
+        <label class="flex items-center text-white cursor-pointer">
+          <input
+            name="upper-case"
+            type="checkbox"
+            class="h-5 w-5 accent-accent text-accent bg-input border-none rounded"
+          />
+          <span class="ml-3">Include Uppercase Letters</span>
+        </label>
+        <label class="flex items-center text-white cursor-pointer">
+          <input
+            name="lower-case"
+            type="checkbox"
+            class="h-5 w-5 accent-accent text-accent bg-input border-none rounded"
+          />
+          <span class="ml-3">Include Lowercase Letters</span>
+        </label>
+        <label class="flex items-center text-white cursor-pointer">
+          <input
+            name="digits"
+            type="checkbox"
+            class="h-5 accent-accent w-5 text-accent bg-input border-none rounded"
+          />
+          <span class="ml-3">Include Numbers</span>
+        </label>
+        <label class="flex items-center text-white cursor-pointer">
+          <input
+            name="symbols"
+            type="checkbox"
+            class="h-5 w-5 accent-accent text-accent bg-input border-none rounded"
+          />
+          <span class="ml-3">Include Symbols</span>
+        </label>
+      </div>
+
+      <div class="bg-input p-4 flex justify-between items-center mb-6">
+        <span class="text-gray-400">STRENGTH</span>
+        <div class="flex gap-2">
+          <div
+            class="w-3 h-8 border-2 border-white"
+            id="strength-indicator"
+          ></div>
+          <div
+            class="w-3 h-8 border-2 border-white"
+            id="strength-indicator"
+          ></div>
+          <div
+            class="w-3 h-8 border-2 border-white"
+            id="strength-indicator"
+          ></div>
+          <div
+            class="w-3 h-8 border-2 border-white"
+            id="strength-indicator"
+          ></div>
+        </div>
+      </div>
+
+      <button
+        onclick="generate()"
+        class="w-full bg-accent hover:bg-opacity-90 text-background font-bold py-4 flex items-center justify-center gap-2"
+      >
+        GENERATE
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
