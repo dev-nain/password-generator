@@ -43,5 +43,5 @@ Users should be able to:
 
 ## Author
 
-- GitHub - @dev-nain
-- Twitter - @nain_2206
+- GitHub - [dev-nain](https://github.com/dev-nain)
+- Twitter - [nain_2206](https://x.com/nain_2206)
